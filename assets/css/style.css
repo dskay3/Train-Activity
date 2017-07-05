@@ -1,0 +1,57 @@
+@import url("fonts.css");
+
+.jumbotron h1 {
+    font-weight: bold;
+    color: #FFF;
+    font-family: Zephyr;
+    margin-top: 0;
+    font-size: 100px;
+}
+
+.pageTitle {
+    background-color: #1A2048;
+    border-radius: 0 !important;
+}
+
+.pageImg {
+    background-image: url("../images/train.jpg");
+    height: 300px;
+    background-size: 100% 100%;
+}
+
+.trainSchedule,
+.trainInputs {
+    background-color: #1A2048 !important;
+    color: #FFF !important;
+    font-weight:bold;
+}
+
+input {
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+.inputButton {
+    font-weight: bold;
+    padding: 7px;
+}
+
+
+
+@media (min-width: 1px) and (max-width: 767px) {
+    .jumbotron h1 {
+        font-size: 50px;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+    .jumbotron h1 {
+        font-size: 75px;
+    }
+}
+
+@media (min-width: 992px) {
+    .jumbotron h1 {
+        font-size: 100px;
+    }
+}

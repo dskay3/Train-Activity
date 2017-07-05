@@ -7,17 +7,23 @@
     <meta name="viewport" content="width=device-width, height=device-height">
 
     <title>Train Schedule</title>
-
+    
+    <!--Bootstrap CDN-->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+    <!--Bootswatch Theme-->
     <link rel="stylesheet" href="https://bootswatch.com/spacelab/bootstrap.min.css">
+    <!--Custom CSS-->
     <link rel="stylesheet" href="assets/css/style.css" type="text/css">
-    <<script src="https://momentjs.com/downloads/moment.js" type="text/javascript"></script>
+    <!--Moment JS-->
+    <script src="https://momentjs.com/downloads/moment.js" type="text/javascript"></script>
 </head>
 
 <body>
     <div class="container">
-        <div class="jumbotron">
-            <h1>Raleigh Train Scheduler</h1>
+        <div class="pageImg"></div>
+
+        <div class="jumbotron pageTitle">
+            <h1 class="text-center">Raleigh Train Scheduler</h1>
         </div>
     </div>
 
@@ -25,7 +31,7 @@
         <div class="row">
             <div class="col-sm-12">
                 <div class="panel panel-default">
-                    <div class="panel-heading">Current Train Schedule</div>
+                    <div class="panel-heading trainSchedule">Current Train Schedule</div>
                     <div class="panel-body">
                         <table class="table table-sm">
                         <thead>
@@ -55,7 +61,7 @@
         <div class="row">
             <div class="col-sm-6">
                 <div class="panel panel-default">
-                    <div class="panel-heading">Add Train</div>
+                    <div class="panel-heading trainInputs">Add Train</div>
                     <div class="panel-body">
                         <form>
                             <div class="inputs">
@@ -79,18 +85,24 @@
                             </div>
 
                             <input type="submit" value="Submit" class="inputButton">
+                        </form>
                     </div>
                 </div>
             </div>
 
-            <div class="sm-col-6">
+            <div class="col-sm-6">
+                <img class="img-fluid" src="assets/images/raleigh.jpeg">
             </div>
         </div>
     </div>
 
-
+    <!--jQuery-->
     <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+    <!--Tether for Bootstrap-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+    <!--Bootstrap JS-->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+    <!--Custom JS-->
+    <script src="assets/javascript/javascript.js" type="text/javascript"></script>
 </body>
 </html>
