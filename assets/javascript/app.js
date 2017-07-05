@@ -1,11 +1,11 @@
 // Initialize Firebase
 var config = {
-apiKey: "AIzaSyDGPV_2V0cMf8EQbXr2-cw2-SLbT4djRaY",
-authDomain: "uncbootcamp-train-scheduler.firebaseapp.com",
-databaseURL: "https://uncbootcamp-train-scheduler.firebaseio.com",
-projectId: "uncbootcamp-train-scheduler",
-storageBucket: "",
-messagingSenderId: "1011696375884"
+    apiKey: "AIzaSyDGPV_2V0cMf8EQbXr2-cw2-SLbT4djRaY",
+    authDomain: "uncbootcamp-train-scheduler.firebaseapp.com",
+    databaseURL: "https://uncbootcamp-train-scheduler.firebaseio.com",
+    projectId: "uncbootcamp-train-scheduler",
+    storageBucket: "",
+    messagingSenderId: "1011696375884"
 };
 firebase.initializeApp(config);
 
@@ -18,8 +18,8 @@ var trainDest = "";
 var trainTime = "";
 var trainFreq = 0;
 
-$("#submit-button").on("click", function (event) {
-    e.preventDefault();
+$("#add-train-data").on("click", function (event) {
+    event.preventDefault();
 
     // Grabs values from textboxes
     trainName = $("#train-name").val().trim();
@@ -37,16 +37,17 @@ $("#submit-button").on("click", function (event) {
     });
 })
 
-database.ref().on("value", function (childSnapshot) {
-    console.log(childSnapshot.val().trainName);
-    console.log(childSnapshot.val().trainDest);
-    console.log(childSnapshot.val().trainTime);
-    console.log(childSnapshot.val().trainFreq);
+database.ref().on("child_added", function (snapshot) {
+    console.log(snapshot.val().trainName);
+    console.log(snapshot.val().trainDest);
+    console.log(snapshot.val().trainTime);
+    console.log(snapshot.val().trainFreq);
 
-    // var trainRow = $("<tr>");
-    var trainData = $("<td>");
-    // trainRow.append(trainData);
-    $("#trainData").append(trainData);
 }, function(errorObject) {
     console.log("Errors handled: " + errorObject.code);
 });
+
+database.ref().orderByChild("dateAdded").limitToLast(1).on("child_added", function (snapshot){
+    var trainData = $("<td>");
+    $("#trainData").append(trainData);
+})
