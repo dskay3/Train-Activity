@@ -36,7 +36,14 @@ input {
     padding: 7px;
 }
 
+#submit-button {
+    width: 100%;
+}
 
+#submit-button:hover {
+    background-color: #1A2048;
+    color: #FFF;
+}
 
 @media (min-width: 1px) and (max-width: 767px) {
     .jumbotron h1 {

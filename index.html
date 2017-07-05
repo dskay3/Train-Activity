@@ -42,12 +42,12 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>Train 1</td>
+                            <tr id="trainData">
+                                <!--<td>Train 1</td>
                                 <td>Trenton</td>
                                 <td>25</td>
                                 <td>05:24 PM</td>
-                                <td>10</td>
+                                <td>10</td>-->
                             </tr>
                         </tbody>
                         </table>
@@ -61,28 +61,28 @@
                 <div class="panel panel-default">
                     <div class="panel-heading trainInputs">Add Train</div>
                     <div class="panel-body">
-                        <form>
+                        <form id="add-form">
                             <div class="inputs">
                                 <label>Train Name: </label>
-                                <input type="text" name="tName">
+                                <input type="text" name="tName" id="train-name">
                             </div>
                             
                             <div class="inputs">
                                 <label>Destination: </label>
-                                <input type="text" name="dest">
+                                <input type="text" name="dest" id="train-destination">
                             </div>
 
                             <div class="inputs">
                                 <label>First Train Time: (HH:mm - military time) </label>
-                                <input type="text" name="iTime">
+                                <input type="text" name="iTime" id="train-time">
                             </div>
 
                             <div class="inputs">
                                 <label>Frequency (min): </label>
-                                <input type="text" name="freq">
+                                <input type="number" name="freq" id="train-freq">
                             </div>
 
-                            <input type="submit" value="Submit" class="inputButton">
+                            <button type="submit" class="inputButton" id="submit-button">Submit</button>
                         </form>
                     </div>
                 </div>
@@ -105,6 +105,6 @@
     <!--Bootstrap JS-->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
     <!--Custom JS-->
-    <script src="assets/javascript/javascript.js" type="text/javascript"></script>
+    <script src="assets/javascript/app.js" type="text/javascript"></script>
 </body>
 </html>
