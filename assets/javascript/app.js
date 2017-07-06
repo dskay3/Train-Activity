@@ -71,10 +71,13 @@ database.ref().on("child_added", function (snapshot) {
         trainTime = moment(snapshot.val().firstTrain, "HH:mm");
         trainFreq = snapshot.val().freq;
 
+        // trainTime (pushed back 1 year to make sure it comes before current time)
+        var trainTimeConverted = moment(trainTime, "HH:mm").subtract(1, "years");
+
         currentTime = moment().format("HH:mm");
         console.log("Current Time: " + currentTime);
 
-        timeDiff = moment().diff(moment(trainTime), "minutes");
+        timeDiff = moment().diff(moment(trainTimeConverted), "minutes");
         console.log("Time remaining: " + timeDiff);
 
         timeRemainder = timeDiff % trainFreq;
