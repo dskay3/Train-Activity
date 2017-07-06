@@ -27,22 +27,25 @@ var newTrain = {
     dest: trainDest,
     freq: trainFreq,
     firstTrain: trainTime,
-    dateAdded: firebase.database.ServerValue.TIMESTAMP
 }
+var firstTrainInput = "";
 
 $("#add-train-data").on("click", function (event) {
     event.preventDefault();
 
-    // Grabs values from textboxes
-    newTrain.name = $("#train-name").val().trim();
-    newTrain.dest = $("#train-destination").val().trim();
-    newTrain.firstTrain = moment($("#train-time").val().trim(), "HH:mm").format("HH:mm");
-    newTrain.freq = $("#train-freq").val().trim();
+    firstTrainInput = moment($("#train-time").val().trim(), "HH:mm").format("HH:mm");
 
-    console.log(newTrain.name);
-    console.log(newTrain.dest);
-    console.log(newTrain.firstTrain);
-    console.log(newTrain.freq);
+    // Error handler when First Train Time is outside of the 24h military time
+    if (firstTrainInput !== 'Invalid date') {
+        // Grabs values from textboxes
+        newTrain.name = $("#train-name").val().trim();
+        newTrain.dest = $("#train-destination").val().trim();
+        newTrain.firstTrain = firstTrainInput;
+        newTrain.freq = $("#train-freq").val().trim();
+    } else {
+        alert("Please enter a valid First Train Time");
+        clearInput();
+    }
 
     // Code for handling the push
     database.ref().push(newTrain);
@@ -59,29 +62,31 @@ function clearInput() {
     $("#train-freq").val("");
 }
 
-
+// Creates the table with Train data and performs calculations for Next Arrival and Minutes Away
 database.ref().on("child_added", function (snapshot) {
-    trainName = snapshot.val().name;
-    trainDest = snapshot.val().dest;
-    trainTime = moment(snapshot.val().firstTrain, "HH:mm");
-    trainFreq = snapshot.val().freq;
+    // Error handler for when First Train Time is outside the 24h military time
+    if (firstTrainInput !== 'Invalid date') {
+        trainName = snapshot.val().name;
+        trainDest = snapshot.val().dest;
+        trainTime = moment(snapshot.val().firstTrain, "HH:mm");
+        trainFreq = snapshot.val().freq;
 
-    currentTime = moment().format("HH:mm");
-    console.log("Current Time: " + currentTime);
+        currentTime = moment().format("HH:mm");
+        console.log("Current Time: " + currentTime);
 
-    timeDiff = moment().diff(moment(trainTime), "minutes");
-    console.log("Time remaining: " + timeDiff);
+        timeDiff = moment().diff(moment(trainTime), "minutes");
+        console.log("Time remaining: " + timeDiff);
 
-    timeRemainder = timeDiff % trainFreq;
-    console.log("Remaining Time: " + timeRemainder);
+        timeRemainder = timeDiff % trainFreq;
+        console.log("Remaining Time: " + timeRemainder);
 
-    minAway = trainFreq - timeRemainder;
-    console.log(minAway);
+        minAway = trainFreq - timeRemainder;
+        console.log(minAway);
 
-    nextArrival = moment().add(minAway, "minutes").format("HH:mm");
+        nextArrival = moment().add(minAway, "minutes").format("HH:mm");
 
-    $("#trainData").append("<tr><td>" + trainName + "</td><td>" + trainDest + "</td><td>" + trainFreq + "</td><td>" + nextArrival + "</td><td>" + minAway + "</td></tr>");
-
+        $("#trainData").append("<tr><td>" + trainName + "</td><td>" + trainDest + "</td><td>" + trainFreq + "</td><td>" + nextArrival + "</td><td>" + minAway + "</td></tr>");
+    }
 }, function(errorObject) {
     console.log("Errors handled: " + errorObject.code);
 });
