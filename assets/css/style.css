@@ -36,11 +36,11 @@ input {
     padding: 7px;
 }
 
-#submit-button {
+#add-train-data {
     width: 100%;
 }
 
-#submit-button:hover {
+#add-train-data:hover {
     background-color: #1A2048;
     color: #FFF;
 }
