@@ -1,14 +1,21 @@
-# Train-Activity
-Train Activity
+# NC Train Scheduler
 
-Train activity application for North Carolina.
+This NC Train Scheduler web application allows the user to set times for the train.
 
-Application uses the following technologies:
-- Firebase
-- Javascript
-- Moment.js
-- HTML
-- CSS
+## Use
 
-Enter in a train name, destination, time of the first train, and frequency in minutes. 
-Select the submit button which stores the information in the Current Train Schedule.
+In order to access the web application, you can clone or download the application and double click the `index.html` file.
+
+You can also visit a live website hosted on [Git Pages](https://pages.github.com/).
+
+Click here to visit the live website: [NC Train Scheduler](https://dskay3.github.io/nc-train-scheduler/)
+
+## Purpose
+
+The purpose of this application is to familiarize myself with [Firebase](https://firebase.google.com/).
+
+## Demo
+
+Click on the image below in order to view the live website.
+
+[![demo](/screenshots/nc-train-scheduler.png)](https://dskay3.github.io/nc-train-scheduler/)
